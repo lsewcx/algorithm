@@ -1,3 +1,4 @@
+//unique函数删除重复部分来做到去重
 #include<iostream>
 #include<algorithm>
 #include<vector>
@@ -18,6 +19,29 @@ int main()
     for(it=alls.begin();it!=alls.end();it++)
     {
         cout<<*it<<endl;
+    }
+    return 0;
+}
+
+//利用<set>集合本身的特性做到去重
+#include<iostream>
+#include<set>
+using namespace std;
+set<int>num;
+int i,n,a;
+int main()
+{
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a);
+        num.insert(a);
+    }
+    set<int>::iterator it;//迭代器iterator
+    cout<<num.size()<<endl;
+    for(it=num.begin();it!=num.end();it++)
+    {
+        cout<<*it<<" ";
     }
     return 0;
 }
