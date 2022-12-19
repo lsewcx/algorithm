@@ -1,0 +1,24 @@
+bool check(int x) {/* ... */} // 检查x是否满足某种性质
+
+// 区间[l, r]被划分成[l, mid]和[mid + 1, r]时使用：
+int bsearch_1(int l, int r)
+{
+    while (l < r)
+    {
+        int mid = l + r >> 1;// r用mid更新，mid用l + r >> 1计算
+        if (check(mid)) r = mid; // r用mid更新，mid用l + r >> 1计算
+        else l = mid + 1;
+    }
+    return l;
+}
+// 区间[l, r]被划分成[l, mid - 1]和[mid, r]时使用：
+int bsearch_2(int l, int r)
+{
+    while (l < r)
+    {
+        int mid = l + r + 1 >> 1;
+        if (check(mid)) l = mid;//l用mid更新，mid用l + r + 1 >> 1计算
+        else r = mid - 1;//l用mid更新，mid用l + r + 1 >> 1计算
+    }
+    return l;
+}
